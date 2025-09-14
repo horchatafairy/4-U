@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4 U</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        
+        .main-container {
+            background-color: mintcream;
+            min-height: 100vh;
+        }
+
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; 
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 1rem;
+        }
+    </style>
+</head>
+<body class="main-container flex flex-col items-center justify-center p-4">
+    <div class="bg-white p-8 rounded-2xl shadow-xl max-w-lg w-full text-center">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6">o(╥﹏╥)o</h1>
+
+        
+        <button id="playButton" 
+                class="bg-blue-600 text-white font-semibold py-3 px-8 rounded-full 
+                       transition-all duration-300 ease-in-out transform hover:scale-105 
+                       focus:outline-none focus:ring-4 focus:ring-blue-300 focus:ring-opacity-75 
+                       active:bg-blue-700">
+            Click Me!
+        </button>
+
+        
+        <p id="initialMessage" class="mt-6 text-gray-600">Video will appear below when you click the button.</p>
+
+       
+        <div id="videoContainer" class="video-container mt-8 hidden">
+            <video id="animatedVideo">
+            
+                <source src="file:///Users/jopantoja/Downloads/surroundedbyknowledge.mp4" type="video/mp4">
+                
+            </video>
+        </div>
+
+        
+        <div id="anotherMessage" class="mt-8 p-6 bg-green-100 rounded-lg hidden">
+            <p class="text-lg font-medium text-green-800">
+                I am sending this because I miss you...
+                You’ve been on my mind all day.
+                I love you, I’m sorry I can be 
+                difficult, i did make the situation 
+                worser than it was.  
+            </p>
+        </div>
+    </div>
+
+    <script>
+        
+        const playButton = document.getElementById('playButton');
+        const initialMessage = document.getElementById('initialMessage');
+        const videoContainer = document.getElementById('videoContainer');
+        const animatedVideo = document.getElementById('animatedVideo');
+        const finalMessage = document.getElementById('anotherMessage');
+
+        
+        playButton.addEventListener('click', () => {
+           
+            videoContainer.classList.remove('hidden');
+
+            
+            playButton.classList.add('hidden');
+            initialMessage.classList.add('hidden');
+
+            
+            animatedVideo.play();
+        });
+
+        
+        animatedVideo.addEventListener('ended', () => {
+            
+            anotherMessage.classList.remove('hidden');
+            
+            
+            videoContainer.classList.add('hidden');
+        });
+    </script>
+</body>
+</html>
